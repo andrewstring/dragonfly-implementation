@@ -3,3 +3,4 @@ kaldi_model
 kaldi_tmp
 grammar/__pycache__
 grammar/rule/__pycache__
+.run.py.*
