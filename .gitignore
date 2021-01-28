@@ -3,4 +3,7 @@ kaldi_model
 kaldi_tmp
 grammar/__pycache__
 grammar/rule/__pycache__
-.run.py.*
+*.swp
+*.swo
+grammar/rule/*.swp
+grammar/rule/*.swo
