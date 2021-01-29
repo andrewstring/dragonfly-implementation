@@ -1,8 +1,14 @@
+import threading
+
 from dragonfly import get_engine, Grammar
+
 from grammar.rule.alphabet import AlphabetRule
 from grammar.rule.key import KeyRule
+from grammar.rule.mouse import MouseRule
 from grammar.rule.number import NumberRule
 from grammar.rule.word import WordRule
+
+from listener import KeyListener
 
 engine = get_engine("kaldi",
   model_dir='kaldi_model',
@@ -29,16 +35,27 @@ engine = get_engine("kaldi",
 
 alphabet_rule = AlphabetRule()
 key_rule = KeyRule()
+mouse_rule = MouseRule()
 number_rule = NumberRule()
 word_rule = WordRule()
 
 standard = Grammar('Standard Grammar')
 standard.add_rule(alphabet_rule)
 standard.add_rule(key_rule)
+standard.add_rule(mouse_rule)
 standard.add_rule(number_rule)
 standard.add_rule(word_rule)
 standard.load()
 
+def start_listening(engine):
+    engine.connect()
+    engine.do_recognition()
 
-engine.connect()
-engine.do_recognition()
+listener = KeyListener(grammar=standard)
+
+try:
+    voice_thread = threading.Thread(target=start_listening, args=(engine,))
+    listener_thread = threading.Thread(target=listener.start, args=())
+    voice_thread.start()
+    listener_thread.start()
+except: print('error starting thread')

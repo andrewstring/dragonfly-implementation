@@ -5,5 +5,7 @@ grammar/__pycache__
 grammar/rule/__pycache__
 *.swp
 *.swo
+*.swn
 grammar/rule/*.swp
 grammar/rule/*.swo
+__pycache__
