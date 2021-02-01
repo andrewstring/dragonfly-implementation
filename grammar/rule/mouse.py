@@ -3,8 +3,9 @@ from dragonfly import MappingRule, Mouse
 class MouseRule(MappingRule):
 
     mapping = {
-        'click': Mouse('left'),
-        'dub click': Mouse('left:2'),
+        'clip': Mouse('left'),
+        'dub clip': Mouse('left:2'),
+        'try clip': Mouse('left:3'), 
         'drag': Mouse('left:down'),
         'release': Mouse('left:up'),
         'righty': Mouse('right')

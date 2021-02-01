@@ -11,10 +11,10 @@ class KeyListener:
         elif self.ctrl_pressed and key == Key.shift:
             if self.grammar.enabled:
                 self.grammar.disable()
-                print('STOPPED LISTENING')
+                print('\nSTOPPED LISTENING')
             else:
                 self.grammar.enable()
-                print('STARTED LISTENING')
+                print('\nSTARTED LISTENING')
 
     def on_release(self, key):
         if key == Key.ctrl: self.ctrl_pressed = False

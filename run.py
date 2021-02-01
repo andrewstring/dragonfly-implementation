@@ -6,6 +6,7 @@ from grammar.rule.alphabet import AlphabetRule
 from grammar.rule.key import KeyRule
 from grammar.rule.mouse import MouseRule
 from grammar.rule.number import NumberRule
+from grammar.rule.shortcut import ShortcutRule
 from grammar.rule.word import WordRule
 
 from listener import KeyListener
@@ -37,6 +38,7 @@ alphabet_rule = AlphabetRule()
 key_rule = KeyRule()
 mouse_rule = MouseRule()
 number_rule = NumberRule()
+shortcut_rule = ShortcutRule()
 word_rule = WordRule()
 
 standard = Grammar('Standard Grammar')
@@ -44,6 +46,7 @@ standard.add_rule(alphabet_rule)
 standard.add_rule(key_rule)
 standard.add_rule(mouse_rule)
 standard.add_rule(number_rule)
+standard.add_rule(shortcut_rule)
 standard.add_rule(word_rule)
 standard.load()
 
