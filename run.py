@@ -2,12 +2,16 @@ import threading
 
 from dragonfly import get_engine, Grammar
 
+# import standard grammar rules
 from grammar.rule.alphabet import AlphabetRule
 from grammar.rule.key import KeyRule
 from grammar.rule.mouse import MouseRule
 from grammar.rule.number import NumberRule
 from grammar.rule.shortcut import ShortcutRule
 from grammar.rule.word import WordRule
+
+# import dictation rule
+from grammar.rule.dictation import DictationRule
 
 from listener import KeyListener
 
@@ -50,11 +54,17 @@ standard.add_rule(shortcut_rule)
 standard.add_rule(word_rule)
 standard.load()
 
+dictation_rule = DictationRule()
+
+dictation = Grammar('Dictation Grammar')
+dictation.add_rule(dictation_rule)
+dictation.load()
+
 def start_listening(engine):
     engine.connect()
     engine.do_recognition()
 
-listener = KeyListener(grammar=standard)
+listener = KeyListener(standard=standard, dictation=dictation)
 
 try:
     voice_thread = threading.Thread(target=start_listening, args=(engine,))
