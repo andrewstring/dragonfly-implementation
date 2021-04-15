@@ -11,6 +11,8 @@ Click==7.0
 colorama==0.4.3
 command-not-found==0.3
 coverage==5.4
+cpuid==0.0.10
+cpuid-native==0.0.7
 cryptography==2.8
 cupshelpers==1.0
 dbus-python==1.2.16
@@ -23,6 +25,8 @@ dragonfly2==0.29.0
 entrypoints==0.3
 evdev==1.4.0
 flake8==3.8.4
+future==0.18.2
+Glances==3.1.6.2
 hjson==3.0.2
 httplib2==0.14.0
 idna==2.10
@@ -52,9 +56,11 @@ pexpect==4.6.0
 Pillow==7.0.0
 protobuf==3.6.1
 psutil==5.8.0
+PyBluez==0.22
 pycairo==1.16.2
 pycodestyle==2.6.0
 pycparser==2.20
+pycryptodomex==3.6.1
 pycups==1.9.73
 pyflakes==2.2.0
 Pygments==2.7.4
@@ -67,7 +73,8 @@ pyparsing==2.4.7
 pyperclip==1.8.1
 pyRFC3339==1.1
 pyrsistent==0.17.3
-python-apt==2.0.0+ubuntu0.20.4.3
+pyserial==3.5
+python-apt==2.0.0+ubuntu0.20.4.4
 python-dateutil==2.7.3
 python-debian===0.1.36ubuntu1
 python-xlib==0.29
