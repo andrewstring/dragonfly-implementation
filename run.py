@@ -2,6 +2,8 @@ import threading
 
 from dragonfly import get_engine, Grammar
 
+import kaldi_active_grammar
+
 # import standard grammar rules
 from grammar.rule.alphabet import AlphabetRule
 from grammar.rule.key import KeyRule
@@ -9,11 +11,13 @@ from grammar.rule.mouse import MouseRule
 from grammar.rule.number import NumberRule
 from grammar.rule.shortcut import ShortcutRule
 from grammar.rule.word import WordRule
-
 # import dictation rule
 from grammar.rule.dictation import DictationRule
 
+from notification.notify import Notification
 from listener import KeyListener
+
+kaldi_active_grammar.disable_donation_message()
 
 engine = get_engine("kaldi",
   model_dir='kaldi_model',
@@ -64,7 +68,15 @@ def start_listening(engine):
     engine.connect()
     engine.do_recognition()
 
-listener = KeyListener(standard=standard, dictation=dictation)
+# listener setup
+summaries = {
+  'mute': 'NOT LISTENING',
+  'standard': 'STANDARD MODE',
+  'dictation': 'DICTATION MODE'
+}
+notifier = Notification('Main Notifier', summaries)
+
+listener = KeyListener(standard, dictation, notifier)
 
 try:
     voice_thread = threading.Thread(target=start_listening, args=(engine,))
